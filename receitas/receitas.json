@@ -1,0 +1,38 @@
+[
+    {
+        "titulo": "Mingau de tapioca",
+        "imagem": "./imagens/mingau.png",
+        "preparo": "Em uma vasilha, coloque a tapioca, adicione 100 ml de leite e deixe descansar por 10 minutos. Transfira para uma panela e adicione o restante do leite. Acrescente o eritritol ou xilitol e leve para cozinhar em fogo baixo até engrossar.Finalize com canela a gosto e está pronto.",
+        "ingredientes": [
+            "5 colheres de sopa de tapioca",
+            "400 ml de leite",
+            "3 colheres de sopa de açucar",
+            "Canela em pó a gosto"
+        ]
+    },
+    {
+        "titulo": "Pão de queijo de frigideira",
+        "imagem": "./imagens/pao-queijo.png",
+        "preparo": "Em uma vasilha, coloque todos os ingredientes e misture até formar uma massa homogênea. Aqueça uma frigideira antiaderente, despeje parte da massa e frite como se fosse uma panqueca, até que as bordas fiquem douradas. Repita o processo até acabar a massa. Está pronto! Bom apetite.",
+        "ingredientes": [
+            "1/3 de xícara de queijo parmesão ralado",
+            "1 ovo",
+            "1/3 de xícara de leite",
+            "1/4 de xícara de óleo",
+            "1 xícara de polvilho doce",
+            "Sal a gosto"
+        ]
+    },
+    {
+        "titulo": "Smoothie de morango e banana",
+        "imagem": "./imagens/smoothie.png",
+        "preparo": "Corte as bananas e os morangos em pedaços menores. Em um liquidificador, coloque a banana, o morango, o iogurte, o gelo e bata bem. Coloque o adoçante e bata somente para misturar. Sirva e aproveite!",
+        "ingredientes": [
+            "2 bananas",
+            "2 xícaras de chá de morangos",
+            "1/3 xícara de chá de iogurte natural",
+            "Adoçante ou açúcar a gosto",
+            "Gelo a gosto"
+        ]
+    }
+]

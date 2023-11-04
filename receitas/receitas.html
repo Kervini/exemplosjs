@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Receitas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+        <style>     
+            .card{
+                height: 96.8vh;
+                width: 100%;
+                margin: 10px 0;
+            }
+            
+            .card img{
+                max-width: 100%;
+                height: 200px;
+            }
+        </style>
+</head>
+
+<body onload="preencheCatalogo()">
+    <div class="container-fluid bg-warning">
+        <div class="d-flex flex-wrap" id="pnlCatalogo">
+
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function getListaIngredientes(ingredientes) {
+        let html = '<ul>';
+
+        ingredientes.map(ingrediente => {
+            html += `<li> ${ingrediente} </li>`;
+        })
+
+        html += '</ul>';
+
+        return html;
+    }
+
+    function getCard(receita) {
+        let html;
+
+        html = '<div class="col-md-4">';
+        html += '<div class="card">';
+        html += `<img class="card-img-top" src="${receita.imagem}" alt="IMG">`;
+        html += '<div class="card-body" style="overflow-y: auto;">';
+        html += `<h5 class="card-title">${receita.titulo}</h5>`;
+        html += '<div class="card-text">';
+        html += getListaIngredientes(receita.ingredientes);
+        html += '<hr>';
+        html += `<p>${receita.preparo} </p>`;
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+
+        return html;
+    }
+
+    function preencheCatalogo() {
+        fetch("receitas.json")
+            .then(response => response.json())
+            .then(receitas => {
+                const catalogo = document.getElementById("pnlCatalogo");
+                receitas.map(receitaItem => {
+                    let receita = receitaItem;
+                    catalogo.innerHTML += getCard(receita);
+                })
+            });
+    }
+</script>
+
+</html>

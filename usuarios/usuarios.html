@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="container bg-warning">
+    <h1>Usuários de Teste via REST</h1>
+    <p class="h4 text-light font-italic">Os dados foram obtidos atráves da API Reqres.in</p>
+    <div class="container-fluid" id="app">
+        <div class="row justify-content-around">
+            <div class="card col-md-3 p-2 m-3" v-for="user in users" id="index">
+                <img class="card-img-top" v-bind:src="user.avatar" alt="Reqres.in">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+                    <p class="card-text"> {{user.email}} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.js"></script>
+
+    <script>
+        Vue.createApp({
+            methods: {
+                loadUsers() {
+                    let dadosJson = [];
+
+                    fetch("https://reqres.in/api/users?per_page=10")
+                        .then(response => response.json())
+                        .then(dados => {
+                            dadosJson = dados.data;
+
+                            for(const item of dadosJson){
+                                this.users.push(item);
+                            }
+                        });
+                }
+            },
+            data() {
+                return {
+                    users: [],
+                };
+            },
+            mounted() {
+                this.loadUsers();
+            }
+
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
